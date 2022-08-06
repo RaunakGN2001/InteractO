@@ -1,0 +1,15 @@
+{
+  "name": "interacto",
+  "version": "1.0.0",
+  "description": "Realtime chat application made using MERN Stack",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "RaunakGn",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19"
+  }
+}
