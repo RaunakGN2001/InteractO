@@ -1,10 +1,30 @@
 import React from 'react'
-
+import Login from '../components/Auth/Login'
+import Signup from '../components/Auth/Signup'
+import { Container, Box, Text, Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 const Homepage = () => {
   return (
-    <div>
-        <h1>This is the homepage</h1>
-    </div>
+    <Container maxWidth="xl" centerContent>
+        <Box display='flex' justifyContent='center' alignItems='center' p={3} background='white' width='100%' margin='40px 0 15px 0' borderRadius='lg' borderWidth='1px'>
+          <Text fontSize='5xl' fontFamily='work sans'>InteractO</Text>
+        </Box>
+        <Box background='white' width='100%' borderRadius='lg' borderWidth='1px' fontFamily='work sans'>
+          <Tabs isFitted variant='enclosed'>
+            <TabList>
+              <Tab fontSize='xl'>Login</Tab>
+              <Tab fontSize='xl'>Sign Up</Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                <Login />
+              </TabPanel>
+              <TabPanel>
+                <Signup />
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </Box>
+    </Container>
   )
 }
 

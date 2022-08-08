@@ -2,10 +2,11 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv'); 
 const { chats } = require('./data/data')
+const cors = require('cors');
 
 dotenv.config();
 
-
+app.use(cors());
 app.get('/', (req, res) => {
     res.send("Hello Welcome to my homepage"); // response from server
 })
