@@ -28,7 +28,7 @@ const Login = () => {
 
         <FormControl id='email' isRequired>
             <FormLabel>Email</FormLabel>
-            <Input type='email' placeholder='Enter your email' autoComplete='off' onChange={(e) => {
+            <Input type='email' value={email} placeholder='Enter your email' autoComplete='off' onChange={(e) => {
                 setEmail(e.target.value)
             }} />
         </FormControl>
@@ -36,7 +36,7 @@ const Login = () => {
         <FormControl id='password' isRequired>
             <FormLabel>Password</FormLabel>
             <InputGroup>
-                <Input type={passwordVisible ? 'text' : 'password'} placeholder='Enter your password' autoComplete='off' onChange={(e) => {
+                <Input type={passwordVisible ? 'text' : 'password'} value={password} placeholder='Enter your password' autoComplete='off' onChange={(e) => {
                     setPassword(e.target.value) 
                 }}/>
                 <InputRightElement width='4.5rem' paddingRight='0.05rem' >
