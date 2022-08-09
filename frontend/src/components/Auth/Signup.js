@@ -29,7 +29,7 @@ const Signup = () => {
     }
 
     function submitHandler() {
-
+        
     }
 
 
@@ -81,9 +81,7 @@ const Signup = () => {
             }}/>
         </FormControl>
 
-        <Button onClick={() => {
-            console.log(email, name, password, confirmPassword);
-        }} colorScheme='blue' width='100%' onClick={submitHandler} style={{marginTop: 15 }}>
+        <Button colorScheme='blue' width='100%' onClick={submitHandler} style={{marginTop: 15 }}>
             Sign Up
         </Button>
         
