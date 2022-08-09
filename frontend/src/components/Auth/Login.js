@@ -1,13 +1,17 @@
 import React from 'react'
 import { useState ,useRef } from 'react'
-import { Text, Stack, HStack, VStack, FormControl, FormLabel, Input, InputGroup, InputRightAddon, InputRightElement, Button } from '@chakra-ui/react'
+import { Text, Stack, HStack, VStack, FormControl, FormLabel, Input, InputGroup, InputRightAddon, InputRightElement, Button, useToast } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const [loading, setLoading] = useState(false);
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const toast = useToast();
+    const navigate = useNavigate();
 
 
     function passwordVisibiltyHandler() {
@@ -17,9 +21,57 @@ const Login = () => {
         else setPasswordVisible(true);
     }
 
-    function loginHandler() {
-        console.log(email);
-        console.log(password);
+    async function loginHandler() {
+        setLoading(true);
+        if(!email || !password) {
+            toast({
+                title: 'Please fill all the fields',
+                status: 'warning',
+                duration: 9000,
+                isClosable: true,
+                position: 'top'
+              });
+              setLoading(false);
+              return;
+        }
+
+        try {
+            const config = {
+                headers: {
+                    "Content-type":"application/json",
+                }, 
+            };
+
+            const { data } = await axios.post('/api/user/login', { email, password }, config);
+
+            toast ({
+                title: 'Login Successful',
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+                position: 'top'
+            })
+
+            localStorage.setItem('userInfo', JSON.stringify(data));
+            setLoading(false);
+            navigate('/chats');
+        }
+
+        catch(error) {
+            toast ({
+                title: 'Error Occured!',
+                description: error.response.data.message,
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+                position: 'top'
+            })
+
+            setLoading(false);
+        }
+
+        setLoading(false);
+
     }
 
 
@@ -46,7 +98,7 @@ const Login = () => {
         </FormControl>
 
          
-        <Button colorScheme='blue' width='100%' style={{marginTop: 15 }} onClick={loginHandler}>
+        <Button colorScheme='blue' width='100%' style={{marginTop: 15 }} onClick={loginHandler} isLoading={loading}>
             Login
         </Button>
         <Button colorScheme='red' width='100%' style={{marginTop: 15 }} 

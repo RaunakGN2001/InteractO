@@ -1,6 +1,8 @@
 import React from 'react'
-import { useState ,useRef } from 'react'
-import { Text, Stack, HStack, VStack, FormControl, FormLabel, Input, InputGroup, InputRightAddon, InputRightElement, Button } from '@chakra-ui/react'
+import { useState , useRef } from 'react'
+import { Text, Stack, HStack, VStack, FormControl, FormLabel, Input, InputGroup, InputRightAddon, InputRightElement, Button, useToast } from '@chakra-ui/react'
+import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const Signup = () => {
     const [name, setName] = useState();
@@ -8,11 +10,11 @@ const Signup = () => {
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
     const [pic, setPic] = useState();
-
-
+    const [loading, setLoading] = useState(false);
+    const toast = useToast();
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-
+    const navigate = useNavigate();
 
     function passwordVisibiltyHandler() {
         if(passwordVisible) {
@@ -28,9 +30,112 @@ const Signup = () => {
         else setConfirmPasswordVisible(true);
     }
 
-    function submitHandler() {
-        
+
+    function postDetails(pics) {
+        setLoading(true);
+        if(pics === undefined) {
+            toast({
+                title: 'Please select an image',
+                description: "Image selection invalid.",
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+              });
+              return;
+        }
+
+        if(pics.type === "image/jpeg" || pics.type === "image/png") {
+            const data = new FormData(); // Cloudinary
+            data.append("file", pics);
+            data.append("upload_preset", "interacto");
+            data.append("cloud_name", "do6znejec");
+            fetch("https://api.cloudinary.com/v1_1/do6znejec/image/upload", {
+                method: 'POST',
+                body: data
+            }).then((res) => {
+                res.json()
+            }).then((data) => {
+                setPic(data.url.toString());
+                setLoading(false);
+            }).catch((err) => {
+                console.log(err);
+                setLoading(false);
+            })
+        }
+        else {
+            toast({
+                title: 'Please select an image',
+                description: "Image selection invalid.",
+                status: 'warning',
+                duration: 9000,
+                isClosable: true,
+              });
+              setLoading(false);
+              return;
+        }
     }
+
+    async function submitHandler() {
+        setLoading(true);
+        if(!name || !email || !password || !confirmPassword) {
+            toast({
+                title: 'Please fill all the fields',
+                status: 'warning',
+                duration: 9000,
+                isClosable: true,
+                position: 'top'
+              });
+              setLoading(false);
+              return;
+        }
+        if(password !== confirmPassword) {
+            toast({
+                title: 'Passwords do not match',
+                status: 'warning',
+                duration: 9000,
+                isClosable: true,
+                position: 'top'
+              });
+              return;
+              setLoading(false);
+        }
+
+        try {
+            const config = {
+                headers: {
+                    "Content-type":"application/json",
+                }, 
+            };
+
+
+            const { data } = await axios.post("/api/user", {name, email, password, pic}, config);
+
+            toast({
+                title: 'Registration Successful',
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+                position: 'top'
+            });
+
+            localStorage.setItem('userInfo', JSON.stringify(data)); // store in local storage
+
+            setLoading(false); // loading icon will stop
+
+            navigate('/chats');
+        } catch(error) {
+            toast({
+                title: 'Error Occured!',
+                description: error.response.data.message,
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+                position: 'top'
+            });
+
+            setLoading(false);
+        }
+    };
 
 
   return (
@@ -76,12 +181,10 @@ const Signup = () => {
 
         <FormControl marginBottom='10px'>
             <FormLabel>Upload your picture</FormLabel>
-            <Input type='file' p={1.5} accept='image/*' ref={pic} border='none' onChange={(e) => {
-                setPic(e.target.value)
-            }}/>
+            <Input type='file' p={1.5} accept='image/*' border='none' onChange={(e) => postDetails(e.target.files[0])} />
         </FormControl>
 
-        <Button colorScheme='blue' width='100%' onClick={submitHandler} style={{marginTop: 15 }}>
+        <Button colorScheme='blue' width='100%' onClick={submitHandler} style={{marginTop: 15 }} isLoading={loading}>
             Sign Up
         </Button>
         
