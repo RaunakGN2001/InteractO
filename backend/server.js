@@ -11,7 +11,11 @@ connectDB();
 
 dotenv.config();
 
+
 app.use(cors());
+app.use(express.json()); // to accept JSON Data
+
+
 app.get('/', (req, res) => {
     res.send("Hello Welcome to my homepage"); // response from server
 })
