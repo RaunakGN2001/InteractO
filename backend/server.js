@@ -3,6 +3,11 @@ const app = express();
 const dotenv = require('dotenv'); 
 const { chats } = require('./data/data')
 const cors = require('cors');
+const connectDB = require('./config/db');
+const userRoutes = require('./routes/userRoutes');
+
+connectDB();
+
 
 dotenv.config();
 
@@ -11,20 +16,8 @@ app.get('/', (req, res) => {
     res.send("Hello Welcome to my homepage"); // response from server
 })
 
-app.get('/api/chat', (req, res) => {
-    res.send(chats);
-})
+app.use('/api/user', userRoutes); // redirect all /api/user/ requests to the file userRoutes
 
-app.get('/api/chat/:id', (req, res) => {
-    var chatID = req.params.id;
-
-    const singleChat = chats.find((chat) => {
-       return chat._id === chatID; // if chat_id matches with user entered chat id
-       // return the chat
-    })
-
-    res.send(singleChat);
-})
 
 const Port = process.env.PORT || 3000;
 

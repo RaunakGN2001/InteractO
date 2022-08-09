@@ -10,6 +10,7 @@ const userModel = mongoose.Schema(
         email: {
             type: String,
             required: true,
+            unique: true,
         },
 
         password: {
@@ -19,7 +20,6 @@ const userModel = mongoose.Schema(
 
         pic: {
             type: String,
-            required: true,
             default: "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
         }
     }
