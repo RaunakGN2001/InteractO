@@ -3,6 +3,8 @@ const User = require("../Models/userModel");
 const generateToken = require("../config/generateToken");
 
 
+
+// function for registering user
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password, pic } = req.body;
 
@@ -45,6 +47,8 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 
+
+// function for login
 const authUser = asyncHandler(async (req, res) => {
    const { email, password } = req.body;
    
@@ -65,4 +69,30 @@ const authUser = asyncHandler(async (req, res) => {
    }
 });   
 
-module.exports = { registerUser, authUser }
+
+// /api/user?search=raunak --> GET request
+const allUsers = asyncHandler(async (req, res) => {
+    const keyword = req.query;
+
+    // console.log(keyword.search); // will print the keyword after the search query
+    if(keyword) {
+        $or: [
+            { name: { $regex: req.query.search, $options: "i" } },
+            { email: { $regex: req.query.search, $options: "i" } },
+        ]
+    }
+    else {
+
+    }
+
+
+    // now we need to search for the user using the provided keyword
+    const users = await User.find(keyword).find({ _id :{$ne:req.user._id}}); // so here we are getting all users
+    // whose ids are not matching with the specified id .. here the specified id is of the user logged in 
+    res.send(users);
+});
+
+module.exports = { registerUser, authUser, allUsers }
+
+
+
