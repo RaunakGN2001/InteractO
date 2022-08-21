@@ -4,6 +4,7 @@ const { chats } = require('./data/data')
 const cors = require('cors');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
+const chatRoutes = require('./routes/chatRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 dotenv.config();
 connectDB();
@@ -22,7 +23,11 @@ app.get('/', (req, res) => {
     res.send("Hello Welcome to my homepage"); // response from server
 })
 
+
 app.use('/api/user', userRoutes); // redirect all /api/user/ requests to the file userRoutes
+app.use('/api/chat', chatRoutes);
+
+
 
 // if no other links work as given above .. we finally will come across error handlers
 
