@@ -1,8 +1,7 @@
 const asyncHandler = require("express-async-handler");
-const User = require("../Models/userModel");
+const User = require("../models/userModel");
 const generateToken = require("../config/generateToken");
-
-
+const mongoose = require('mongoose');
 
 // function for registering user
 const registerUser = asyncHandler(async (req, res) => {
@@ -72,25 +71,23 @@ const authUser = asyncHandler(async (req, res) => {
 
 // /api/user?search=raunak --> GET request
 const allUsers = asyncHandler(async (req, res) => {
-    const keyword = req.query;
-
-    // console.log(keyword.search); // will print the keyword after the search query
-    if(keyword) {
-        $or: [
+    const keyword = req.query.search
+      ? {
+          $or: [
             { name: { $regex: req.query.search, $options: "i" } },
             { email: { $regex: req.query.search, $options: "i" } },
-        ]
-    }
-    else {
+          ],
+        }
+      : {};
 
-    }
-
-
-    // now we need to search for the user using the provided keyword
-    const users = await User.find(keyword).find({ _id :{$ne:req.user._id}}); // so here we are getting all users
-    // whose ids are not matching with the specified id .. here the specified id is of the user logged in 
+    // console.log(req.query.search);
+  
+    const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
+    console.log(users);
+    // const users = await User.find(keyword);
     res.send(users);
 });
+  
 
 module.exports = { registerUser, authUser, allUsers }
 

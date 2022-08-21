@@ -1,20 +1,21 @@
 const express = require('express');
-const app = express();
 const dotenv = require('dotenv'); 
 const { chats } = require('./data/data')
 const cors = require('cors');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
-
+dotenv.config();
 connectDB();
 
+const app = express();
 
-dotenv.config();
+
+
+app.use(express.json()); // to accept JSON Data
 
 
 app.use(cors());
-app.use(express.json()); // to accept JSON Data
 
 
 app.get('/', (req, res) => {
@@ -24,6 +25,9 @@ app.get('/', (req, res) => {
 app.use('/api/user', userRoutes); // redirect all /api/user/ requests to the file userRoutes
 
 // if no other links work as given above .. we finally will come across error handlers
+
+
+// Error Handling middlewares
 app.use(notFound);
 app.use(errorHandler);
 
