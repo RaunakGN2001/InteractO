@@ -56,17 +56,23 @@ Start the Client
 ## Screenshots attached for Demo
 
 ### Authenticaton
-![]()
+![](https://github.com/RaunakGN2001/InteractO/blob/main/Screenshots/Sign-Up-Page.png)
+![](https://github.com/RaunakGN2001/InteractO/blob/main/Screenshots/Login-Page.png)
+
 ### One to One chat
-![]()
+![](https://github.com/RaunakGN2001/InteractO/blob/main/Screenshots/One-to-one-chat.png)
+
 ### Group Chat
-![]()
+![](https://github.com/RaunakGN2001/InteractO/blob/main/Screenshots/Modify-Group.png)
+
 ### Search Users
-![]()
+![](https://github.com/RaunakGN2001/InteractO/blob/main/Screenshots/Search-Users.png)
+
 ### Create Group Chats
-![]()
-### Add or Remove users from group
-![]()
+![](https://github.com/RaunakGN2001/InteractO/blob/main/Screenshots/Create-Group-Chat.png)
+
+### Profile View
+![](https://github.com/RaunakGN2001/InteractO/blob/main/Screenshots/view-profile.png)
 
 
 
