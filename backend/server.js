@@ -9,6 +9,9 @@ const messageRoutes = require('./routes/messageRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 const path = require('path');
 
+
+const productionMode = "production";
+
 dotenv.config();
 connectDB();
 
@@ -30,6 +33,23 @@ app.get('/', (req, res) => {
 app.use('/api/user', userRoutes); // redirect all /api/user/ requests to the file userRoutes
 app.use('/api/chat', chatRoutes);
 app.use('/api/message', messageRoutes);
+
+//// Deployment /////
+
+const __dirname1 = path.resolve()
+
+
+if (productionMode === "production") {
+    app.use(express.static(path.join(__dirname1, "/frontend/build")));
+  
+    app.get("*", (req, res) =>
+      res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"))
+    );
+  } else {
+    app.get("/", (req, res) => {
+      res.send("API is running..");
+    });
+  }
 
 
 

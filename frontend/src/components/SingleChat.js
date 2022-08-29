@@ -16,7 +16,7 @@ import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
 var socket, selectedChatCompare;
 
-const ENDPOINT = 'http://localhost:3000'; // server
+const ENDPOINT = 'https://interacto.herokuapp.com/'; // server
 
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {

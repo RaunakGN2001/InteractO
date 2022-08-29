@@ -4,7 +4,8 @@
   "description": "Realtime chat application made using MERN Stack",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon backend/server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "RaunakGn",
   "license": "ISC",
@@ -17,6 +18,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.5.1",
     "nodemon": "^2.0.19",
+    "path": "^0.12.7",
     "socket.io": "^4.5.1",
     "socket.io-client": "^4.5.1"
   }
