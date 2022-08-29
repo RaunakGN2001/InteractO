@@ -16,6 +16,9 @@ import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
 var socket, selectedChatCompare;
 
+const ENDPOINT = 'http://localhost:3000'; // server
+
+
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -166,7 +169,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             px={2}
             w="100%"
             fontFamily="Work sans"
-            d="flex"
+            display="flex"
             justifyContent={{ base: "space-between" }}
             alignItems="center"
           >
@@ -201,7 +204,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             p={3}
             bg="#E8E8E8"
             w="100%"
-            h="100%"
+            height={{base: '90%', sm: '83%' ,md: '90%'}}
             borderRadius="lg"
             overflowY="hidden"
           >

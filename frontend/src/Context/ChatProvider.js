@@ -21,7 +21,7 @@ export const ChatProvider = ({children}) => {
 
     
     return (
-        <ChatContext.Provider value={{ user, setUser, setSelectedChat, chats, setChats }}>
+        <ChatContext.Provider value={{ selectedChat, setSelectedChat, user, setUser, chats, setChats }}>
             {children}
         </ChatContext.Provider>
     )
