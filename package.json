@@ -2,6 +2,9 @@
   "name": "interacto",
   "version": "1.0.0",
   "description": "Realtime chat application made using MERN Stack",
+  "engines": {
+    "node": "18.5.0"
+  },
   "main": "server.js",
   "scripts": {
     "start": "nodemon backend/server.js",
