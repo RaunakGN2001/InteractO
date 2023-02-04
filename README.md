@@ -1,21 +1,31 @@
-# InteractO
+# ✉️ InteractO
 InteractO is a Full Stack Chatting Application. Uses Socket.io for real time communication and stores user details in encrypted format in Mongo DB Database.
 
-## Tech Stack
+## ⚙️ Tech Stack
 
-**Client:** React JS
+ **```Client:```** React JS
 
-**Server:** Node JS, Express JS
+**```Server:```** Node JS, Express JS
 
-**Database:** Mongo DB
+**```Database:```** Mongo DB
 
-**Secure Data Transfer:** Using JWT Token
+**```Secure Data Transfer:```** Using JWT Token
 
-**Encryption of Sensitive Information:** Using BcryptJS
+**```Encryption of Sensitive Information:```** Using BcryptJS
 
-**Realtime messaging:** Using Socket.io
+**```Realtime messaging:```** Using Socket.io
 
-## Run Locally
+## ⭐️ Features
+- Users can register/login via email and password.
+- Profile page where users can view their avatar and display name.
+- Search functionality which can be used to search for users.
+- Real-time updates to the user list, conversation list, and conversation messages.
+- Authentication using JWT Tokens.
+- A Private Chat functionality where users can chat with other users privately.
+- Group Chat functionality where users can create their own group and add or remove users from it ( admin-only privilege ).
+- Name of Group can be updated even after creation.
+
+## 🏃🏽 Run Locally
 
 Clone the project
 
@@ -48,7 +58,6 @@ Start the server
 Start the Client
 
 ```bash
-  //open now terminal
   cd frontend
   npm start
 ```
