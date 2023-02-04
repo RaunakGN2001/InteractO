@@ -62,17 +62,16 @@ Start the Client
   npm start
 ```
 
-## Screenshots attached for Demo
+## Snapshots
 
-### Authenticaton
-![](https://github.com/RaunakGN2001/InteractO/blob/main/Screenshots/Sign-Up-Page.png)
-![](https://github.com/RaunakGN2001/InteractO/blob/main/Screenshots/Login-Page.png)
+### 🔑 Authenticaton
+![Login/Signup](https://github.com/RaunakGN2001/InteractO/blob/eb09b53fdc578221a812d61a7036f5bfd8415f52/Screenshots/Auth.png)
 
-### One to One chat
-![](https://github.com/RaunakGN2001/InteractO/blob/main/Screenshots/One-to-one-chat.png)
+### 🙍-🙍‍♂️ One to One chat
+![One-to-One-Chat](https://github.com/RaunakGN2001/InteractO/blob/eb09b53fdc578221a812d61a7036f5bfd8415f52/Screenshots/One-to-one.png)
 
-### Group Chat
-![](https://github.com/RaunakGN2001/InteractO/blob/main/Screenshots/Modify-Group.png)
+### 👥👥 Group Chat
+![Group-Chat](https://github.com/RaunakGN2001/InteractO/blob/eb09b53fdc578221a812d61a7036f5bfd8415f52/Screenshots/Group-Chat.png)
 
 ### Search Users
 ![](https://github.com/RaunakGN2001/InteractO/blob/main/Screenshots/Search-Users.png)
