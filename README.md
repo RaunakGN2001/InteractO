@@ -62,7 +62,7 @@ Start the Client
   npm start
 ```
 
-## Snapshots
+## Some Snapshots 🌅 are given below:
 
 ### 🔑 Authenticaton
 ![Login/Signup](https://github.com/RaunakGN2001/InteractO/blob/eb09b53fdc578221a812d61a7036f5bfd8415f52/Screenshots/Auth.png)
