@@ -3,6 +3,9 @@
 # 💬 InteractO
 InteractO is a Full Stack Chatting Application. Uses Socket.io for real time communication and stores user details in encrypted format in Mongo DB Database.
 
+# 👀 Live Demo
+https://interacto.vercel.app/
+
 ## ⚙️ Tech Stack
 
  **```Client:```** React JS
