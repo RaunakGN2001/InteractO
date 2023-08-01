@@ -1,6 +1,6 @@
 ![Banner](https://github.com/RaunakGN2001/InteractO/blob/41f490d66dd102f1646b0f7d027d51429c9fe61a/Screenshots/Interacto_Banner.png)
 
-# 💬 InteractO
+# <img height='30px' src='https://github.com/RaunakGN2001/InteractO/blob/4e7329fca1a49fd5ae53d004d4a5806f4d0bcd63/frontend/public/favicon-32x32.png' /> InteractO
 InteractO is a Full Stack Chatting Application. Uses Socket.io for real time communication and stores user details in encrypted format in Mongo DB Database.
 
 # 👀 Live Demo
