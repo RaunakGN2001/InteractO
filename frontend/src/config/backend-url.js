@@ -1,8 +1,8 @@
 const configs = {
-    'development': {
+    development: {
       SERVER_URI: 'localhost:3000',
     },
-    'production': {
+    production: {
       SERVER_URI: 'https://interacto-backend.vercel.app',
     },
   };
