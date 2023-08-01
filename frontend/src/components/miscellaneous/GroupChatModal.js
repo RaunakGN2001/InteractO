@@ -58,7 +58,7 @@ import UserListItem from "../UserAvatar/UserListItem";
             Authorization: `Bearer ${user.token}`,
           },
         };
-        const { data } = await axios.get(`/api/user?search=${search}`, config);
+        const { data } = await axios.get(`${process.env.INTERACTO_BACKEND_URL}/api/user?search=${search}`, config);
         console.log(data);
         setLoading(false);
         setSearchResult(data);

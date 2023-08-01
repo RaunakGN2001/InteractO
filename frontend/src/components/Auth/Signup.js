@@ -108,7 +108,7 @@ const Signup = () => {
             };
 
 
-            const { data } = await axios.post("/api/user", {name, email, password, pic}, config);
+            const { data } = await axios.post(`/api/user`, {name, email, password, pic}, config);
 
             toast({
                 title: 'Registration Successful',
