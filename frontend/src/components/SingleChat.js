@@ -17,7 +17,7 @@ import { SERVER_URI } from '../config/backend-url'
 
 
 var socket, selectedChatCompare;
-
+const ENDPOINT = 'https://interacto-backend.vercel.app'; // interacto backend url
 
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
