@@ -10,8 +10,6 @@ const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 const path = require('path');
 
 
-const productionMode = "production";
-
 dotenv.config();
 connectDB();
 
@@ -34,28 +32,8 @@ app.use('/api/user', userRoutes); // redirect all /api/user/ requests to the fil
 app.use('/api/chat', chatRoutes);
 app.use('/api/message', messageRoutes);
 
-//// Deployment /////
-
-const __dirname1 = path.resolve()
-
-
-if (productionMode === "production") {
-    app.use(express.static(path.join(__dirname1, "/frontend/build")));
-  
-    app.get("*", (req, res) =>
-      // res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"))
-        res.send('Server is up and running");
-    );
-  } else {
-    app.get("/", (req, res) => {
-      res.send("API is running..");
-    });
-  }
-
-
 
 // if no other links work as given above .. we finally will come across error handlers
-
 
 // Error Handling middlewares
 app.use(notFound);
